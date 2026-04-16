@@ -203,6 +203,23 @@ const HeritageTypographic = () => (
       </div>
     </div>
 
+    {/* DT Impact — Zoom gallery from a live global dialogue */}
+    <div className="max-w-2xl mb-8">
+      <div className="relative rounded-2xl overflow-hidden border border-[#E8E4E0] shadow-lg">
+        <img
+          src="/images/sd/dt-impact-zoom.gif"
+          alt="Global Socratic Dialogue on Zoom — students and Fellows from multiple countries"
+          loading="lazy"
+          className="w-full h-auto object-cover"
+        />
+        <div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/60 to-transparent">
+          <p className="text-[9px] font-mono font-bold uppercase tracking-[0.15em] text-white/70">
+            The DT Impact — Global Socratic Dialogue
+          </p>
+        </div>
+      </div>
+    </div>
+
     <div className="max-w-2xl">
       <div className="rounded-2xl border border-[#E8E4E0] bg-white p-8">
         <p className="text-base text-[#4A4A4A] leading-relaxed mb-5">

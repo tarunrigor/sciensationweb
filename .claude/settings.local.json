@@ -1,7 +1,11 @@
 {
   "permissions": {
     "allow": [
-      "Bash(npm run:*)"
+      "Bash(npm run:*)",
+      "Bash(mv \"1_6__Team1  Digital Education _ Judge Q2 _  _ Darwin Day at Shriram Universal School.gif\" \"judges-panel.gif\")",
+      "Bash(mv \"117_126___Hack your MVP_ Sciensation beginning remarks Part One.gif\" \"roundtable-candid.gif\")",
+      "Bash(mv \"109_122__The DT Impact.gif\" \"dt-impact-zoom.gif\")",
+      "Bash(npx tsc *)"
     ]
   }
 }

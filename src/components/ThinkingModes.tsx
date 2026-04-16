@@ -290,6 +290,25 @@ export const ThinkingModes = () => {
           </div>
         </div>
 
+        {/* ── Session moment — breaks the abstract card wall ── */}
+        <FadeIn delay={400}>
+          <div className="relative max-w-2xl mx-auto my-10 lg:my-14">
+            <div className="rounded-2xl overflow-hidden border border-white/[0.08] shadow-2xl shadow-black/30">
+              <img
+                src="/images/sd/extrapolate-speaker.gif"
+                alt="Speaker mid-thought at Extrapolate — Future of Education"
+                loading="lazy"
+                className="w-full h-auto object-cover"
+              />
+              <div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/60 to-transparent">
+                <p className="text-[9px] font-mono font-bold uppercase tracking-[0.15em] text-white/70">
+                  Extrapolate — Future of Education · Live Session
+                </p>
+              </div>
+            </div>
+          </div>
+        </FadeIn>
+
         {/* Row 2: Patterns 7–12 */}
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 lg:gap-4">
           {bottomRow.map((p, i) => (
