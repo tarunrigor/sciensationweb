@@ -26,11 +26,11 @@ export const Footer = () => (
               </a>
             </li>
             <li className="flex items-center gap-4 group cursor-pointer card-lift">
-              <a href="mailto:tarun@deepthought.education" className="flex items-center gap-4 w-full">
+              <a href="mailto:tarun@dtgrowthteams.com" className="flex items-center gap-4 w-full">
                 <div className="w-8 h-8 rounded-lg bg-white/[0.04] flex items-center justify-center group-hover:bg-[#0033CC] transition-all duration-300">
                   <Mail className="w-3.5 h-3.5 text-[#0033CC] group-hover:text-white" />
                 </div>
-                <span className="group-hover:text-white transition-colors">tarun@deepthought.education</span>
+                <span className="group-hover:text-white transition-colors">tarun@dtgrowthteams.com</span>
               </a>
             </li>
             <li className="flex items-center gap-4 group cursor-pointer card-lift">

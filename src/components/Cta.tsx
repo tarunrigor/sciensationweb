@@ -224,7 +224,7 @@ const SessionCard = ({ session }: { session: Session }) => {
               </div>
 
               <a
-                href={`mailto:tarun@deepthought.education?subject=Sciensation%20—%20${encodeURIComponent(session.topic)}%20(${encodeURIComponent(session.dateFull)})`}
+                href={`mailto:tarun@dtgrowthteams.com?subject=Sciensation%20—%20${encodeURIComponent(session.topic)}%20(${encodeURIComponent(session.dateFull)})`}
                 className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-[11px] font-mono font-bold uppercase tracking-[0.12em] text-white transition-opacity hover:opacity-90"
                 style={{ backgroundColor: t.accent }}
                 onClick={(e) => e.stopPropagation()}
@@ -348,7 +348,7 @@ export const Cta = () => {
         <FadeIn delay={240}>
           <div className="text-center mt-14">
             <div className="flex flex-wrap justify-center gap-3 mb-10">
-              {['5 to 8 MDs/CEOs', 'Cross-industry', '60 minutes', 'Socratic method'].map((tag) => (
+              {['5 to 8 MDs/CEOs', 'Cross-industry', '60 minutes', 'Socratic method', 'Structure, not opinion', 'Execution, not strategy'].map((tag) => (
                 <span
                   key={tag}
                   className="px-3 py-1.5 rounded-lg bg-[#0033CC]/[0.04] border border-[#0033CC]/[0.08] text-[10px] font-mono font-bold uppercase tracking-[0.15em] text-[#0033CC]/60"
@@ -359,7 +359,7 @@ export const Cta = () => {
             </div>
 
             <a
-              href="mailto:tarun@deepthought.education?subject=Sciensation%20—%20Apply%20for%20a%20Seat"
+              href="mailto:tarun@dtgrowthteams.com?subject=Sciensation%20—%20Apply%20for%20a%20Seat"
               className="btn-yellow gap-3 !px-10 !py-4 !text-[11px] inline-flex justify-center"
             >
               <span>Apply for a Seat</span>
@@ -368,11 +368,11 @@ export const Cta = () => {
 
             <div className="mt-8 pt-6 border-t border-[#E8E4E0] flex flex-wrap justify-center items-center gap-6">
               <a
-                href="mailto:tarun@deepthought.education"
+                href="mailto:tarun@dtgrowthteams.com"
                 className="flex items-center gap-2 text-sm text-[#8A8A8A] hover:text-[#0033CC] transition-colors"
               >
                 <Mail size={14} />
-                <span>tarun@deepthought.education</span>
+                <span>tarun@dtgrowthteams.com</span>
               </a>
               <a
                 href="tel:+917207001400"
@@ -387,7 +387,7 @@ export const Cta = () => {
 
         <FadeIn delay={360}>
           <p className="text-center text-xs text-[#8A8A8A] mt-14 font-medium">
-            Sciensation is a DeepThought offering, powered by PDGMS — the Scientific Execution AI Platform.
+            Sciensation is a DeepThought offering, moderated by Tarun Ganguly. Powered by PDGMS — the Scientific Execution AI Platform.
           </p>
         </FadeIn>
       </div>

@@ -109,7 +109,7 @@ export const Hero = () => {
             className="mt-8 pl-5 border-l-[3px] border-[#FFD700]/60"
           >
             <p className="text-lg md:text-xl font-bold text-white/90 tracking-tight leading-snug">
-              Scientific thinking<br className="hidden sm:block" /> for wealth creation.
+              The Scientific Roundtable<br className="hidden sm:block" /> for business growth.
             </p>
           </motion.div>
 

@@ -320,7 +320,7 @@ export const ThinkingModes = () => {
         <FadeIn delay={600}>
           <div className="mt-14 pt-8 border-t border-white/[0.05] flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <p className="text-xs text-white/25 leading-relaxed max-w-lg">
-              Moderated by DeepThought — an operator whose PDGMS AIP is helping companies grow at 25–30% CAGR across 32+ implementations.
+              Moderated by Tarun Ganguly — Theoretical Computer Science (IISER Pune), 200+ Socratic Dialogues, builder of PDGMS.
             </p>
             <div className="text-[10px] font-mono font-bold uppercase tracking-[0.25em] text-white/15">
               200+ dialogues · 6 countries · 15 years

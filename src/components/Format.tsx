@@ -135,8 +135,8 @@ export const Format = () => {
                   )}
                 </div>
                 <h3 className="text-xl font-black uppercase tracking-tight text-[#1A1A1A] mb-2">Roundtable</h3>
-                <p className="text-sm font-semibold text-[#1A1A1A] mb-2">
-                  5–8 founders across industries. One KPI from the grid. Moderated by DeepThought.
+            <p className="text-sm font-semibold text-[#1A1A1A] mb-2">
+                  5–8 founders across industries. One KPI from the grid. Moderated by Tarun.
                 </p>
 
                 <AnimatePresence>
@@ -150,7 +150,7 @@ export const Format = () => {
                     >
                       <div className="pl-4 border-l-2 border-[#0033CC]/15 mb-4 mt-2">
                         <p className="text-sm text-[#4A4A4A] leading-relaxed">
-                          Work the structural question underneath the KPI. A textile exporter, a pharma manufacturer, and a SaaS founder working the same retention question see three different structures underneath the same problem. The insight about your business is the byproduct of engaging with the question.
+                          Work the structural question underneath the KPI. A textile exporter, a pharma manufacturer, and a SaaS founder working the same retention question see three different structures underneath the same problem. Stories aren't structure — the insight is the byproduct of the rigour.
                         </p>
                       </div>
                       <div className="inline-block px-3 py-1.5 rounded-md bg-[#0033CC]/[0.05]">
