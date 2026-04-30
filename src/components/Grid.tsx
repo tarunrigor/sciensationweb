@@ -4,7 +4,9 @@ import { X } from 'lucide-react';
 import { FadeIn } from '@/src/components/ui/FadeIn';
 
 /* ── Grid data ── */
-const H_LABELS = ['H1 Offers', 'H2 Capability', 'H3 Capacity', 'H4 Experience', 'H5 Orders'] as const;
+const H_LABELS = ['Offers', 'Capability', 'Capacity', 'Experience', 'Orders'] as const;
+const H_NUMS = ['H5', 'H4', 'H3', 'H2', 'H1'] as const;
+const H_INTERNAL = ['H1', 'H2', 'H3', 'H4', 'H5'] as const;
 const V_LABELS = ['V5 Direction', 'V4 Strategy', 'V3 Plan', 'V2 Supervisor', 'V1 Employee'] as const;
 
 type CellKey = `${string}×${string}`;
@@ -65,38 +67,57 @@ const cellFrameworks: Record<CellKey, string> = {
   'V1×H5': 'BANT · Consultative Selling · Objection Handling',
 };
 
-/* ── Color logic: unique shade per cell ── */
+/* ── KPI data ── */
+const kpis: { name: string; short: string; columns: number[]; question: string }[] = [
+  { name: 'Lead Generation', short: 'Leads', columns: [0, 4], question: 'Where do your high-intent leads come from?' },
+  { name: 'Conversion', short: 'Convert', columns: [4], question: 'Where in your pipeline do deals die, and who owns that stage?' },
+  { name: 'Upselling', short: 'Upsell', columns: [4], question: 'Which customers would buy more if someone was working the relationship?' },
+  { name: 'Cross-selling', short: 'X-Sell', columns: [0, 4], question: 'What offering do your customers not know you have?' },
+  { name: 'Retention', short: 'Retain', columns: [3], question: 'When you lose a customer, is it delivery or relationship?' },
+  { name: 'TAT', short: 'TAT', columns: [2], question: 'Where does a 2-day delay become a 2-week delay?' },
+  { name: 'Margins', short: 'Margins', columns: [1, 2], question: 'Which product line is making money after hidden costs?' },
+  { name: 'Compliance', short: 'Comply', columns: [1], question: 'What compliance burden is competing with growth?' },
+];
+
+/* ── Color logic ── */
 function getCellColor(hIdx: number, vIdx: number): string {
-  // H gradient: navy (#001F3F) → blue (#0066CC) across columns
-  // V gradient: darker at bottom (V1, vIdx=4) → lighter at top (V5, vIdx=0)
-  const hue = 215 + hIdx * 5;          // slight hue shift across H
-  const sat = 80 + hIdx * 4;            // more saturated toward H5
-  const lightBase = 12 + hIdx * 5;      // brighter toward H5
-  const vBoost = (4 - vIdx) * 2.5;      // V5 (idx 0) gets most boost
+  const hue = 215 + hIdx * 5;
+  const sat = 80 + hIdx * 4;
+  const lightBase = 12 + hIdx * 5;
+  const vBoost = (4 - vIdx) * 2.5;
   const light = lightBase + vBoost;
   return `hsl(${hue}, ${sat}%, ${light}%)`;
 }
 
-/* ── KPI highlight data ── */
-const kpis: { name: string; columns: number[]; question: string }[] = [
-  { name: 'Lead Generation', columns: [0, 4], question: 'Where do your high-intent leads come from?' },
-  { name: 'Conversion', columns: [4], question: 'Where in your pipeline do deals die — and who owns that stage?' },
-  { name: 'Upselling', columns: [4], question: 'Which customers would buy more if someone was working the relationship?' },
-  { name: 'Cross-selling', columns: [0, 4], question: 'What offering do your customers not know you have?' },
-  { name: 'Retention', columns: [3], question: 'When you lose a customer — is it delivery or relationship?' },
-  { name: 'TAT', columns: [2], question: 'Where does a 2-day delay become a 2-week delay?' },
-  { name: 'Margins', columns: [1, 2], question: 'Which product line is making money after hidden costs?' },
-  { name: 'Compliance', columns: [1], question: 'What compliance burden is competing with growth?' },
-];
+/* ── KPI Card ── */
+const KPICard = ({ kpi }: { kpi: typeof kpis[0] }) => (
+  <div className="rounded-2xl border border-white/[0.08] bg-white/[0.04] p-6 min-h-[200px] flex flex-col hover:border-[#FFD700]/20 hover:bg-[#FFD700]/[0.04] transition-all duration-500 group">
+    <div className="flex items-center gap-2.5 mb-4">
+      <div className="w-2.5 h-2.5 rounded-full bg-[#FFD700]/30 group-hover:bg-[#FFD700] transition-colors duration-500" />
+      <span className="text-xs font-mono font-black uppercase tracking-[0.15em] text-[#FFD700]/60 group-hover:text-[#FFD700] transition-colors duration-500">
+        {kpi.name}
+      </span>
+    </div>
+
+    <p className="text-lg font-bold text-white/80 leading-snug mb-4">
+      {kpi.question}
+    </p>
+
+    <div className="mt-auto">
+      <span className="text-[9px] font-mono font-bold uppercase tracking-[0.2em] text-white/15 group-hover:text-[#FFD700]/30 transition-colors duration-500">
+        Session topic
+      </span>
+    </div>
+  </div>
+);
 
 /* ── Detail panel ── */
-const CellPanel = ({
-  cellKey,
-  onClose,
-}: {
-  cellKey: CellKey;
-  onClose: () => void;
-}) => {
+const displayCellKey = (key: string) => {
+  const map: Record<string, string> = { H1: 'H5', H2: 'H4', H3: 'H3', H4: 'H2', H5: 'H1' };
+  return key.replace(/H[1-5]/g, (m) => map[m] || m);
+};
+
+const CellPanel = ({ cellKey, onClose }: { cellKey: CellKey; onClose: () => void }) => {
   const [showFrameworks, setShowFrameworks] = useState(false);
   const cell = cellDescriptions[cellKey];
   const frameworks = cellFrameworks[cellKey];
@@ -113,7 +134,7 @@ const CellPanel = ({
       <div className="flex items-start justify-between mb-4">
         <div>
           <div className="text-[10px] font-mono font-bold text-[#FFD700] uppercase tracking-widest mb-1">
-            {cellKey}
+            {displayCellKey(cellKey)}
           </div>
           <div className="text-sm font-bold text-white">{cell.coord}</div>
         </div>
@@ -155,9 +176,18 @@ const CellPanel = ({
 
 export const Grid = () => {
   const [activeCell, setActiveCell] = useState<CellKey | null>(null);
-  const [hoveredKPI, setHoveredKPI] = useState<number | null>(null);
+  const [kpiIdx, setKpiIdx] = useState(0);
+  const total = kpis.length;
 
-  const highlightedCols = hoveredKPI !== null ? kpis[hoveredKPI].columns : [];
+  const visibleKPIs = [
+    kpis[kpiIdx],
+    kpis[(kpiIdx + 1) % total],
+    kpis[(kpiIdx + 2) % total],
+  ];
+
+  const visibleSet = new Set([kpiIdx, (kpiIdx + 1) % total, (kpiIdx + 2) % total]);
+
+  const highlightedCols = kpis[kpiIdx].columns;
 
   return (
     <section
@@ -165,102 +195,195 @@ export const Grid = () => {
       className="relative py-24 md:py-36 px-4 sm:px-6 lg:px-8 overflow-hidden"
       style={{ background: 'linear-gradient(180deg, #001233 0%, #001A4D 50%, #001233 100%)', color: '#FAF8F5' }}
     >
-      {/* Subtle dot grid */}
       <div className="absolute inset-0 pointer-events-none opacity-30" style={{ backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px), radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px)', backgroundSize: '28px 48px', backgroundPosition: '0 0, 14px 24px' }} />
 
       <div className="max-w-7xl mx-auto relative z-10">
+
+        {/* ── KPIs first ── */}
         <FadeIn>
-          <div className="eyebrow text-[#FFD700] mb-4">The Grid</div>
+          <div className="eyebrow text-[#FFD700] mb-4">Your Number</div>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-black uppercase tracking-tighter leading-[0.85] text-white mb-3">
-            Offers to Orders.<br />
-            <span className="text-[#FFD700]">Orders back to Offers.</span>
+            Which KPI keeps you<br />
+            <span className="text-[#FFD700]">up at night?</span>
           </h2>
           <p className="text-base text-white/50 font-medium max-w-lg mb-14">
-            Every business runs this grid. Revenue lives in how well it flows.
+            Each Sciensation session starts with one number. Yours. Pick a KPI and we work it structurally across industries, together.
           </p>
         </FadeIn>
 
-        {/* Grid + Panel layout */}
         <FadeIn delay={100}>
-          <div className="flex flex-col lg:flex-row gap-8 items-start">
-            {/* The 5×5 Grid */}
-            <div className="flex-1 w-full">
-              {/* Authorization arrow */}
-              <div className="flex items-center gap-3 mb-3 ml-[100px] lg:ml-[120px]">
-                <span className="text-[9px] font-mono font-bold uppercase tracking-widest text-white/30">Authorization</span>
-                <div className="flex-1 h-[1px] bg-gradient-to-r from-white/20 to-white/5 relative">
-                  <div className="absolute right-0 top-1/2 -translate-y-1/2 w-0 h-0 border-l-[6px] border-l-white/20 border-y-[3px] border-y-transparent" />
-                </div>
-              </div>
+          <div>
+            <motion.div
+              key={kpiIdx}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.3 }}
+              className="grid grid-cols-1 md:grid-cols-3 gap-5"
+            >
+              {visibleKPIs.map((kpi) => (
+                <KPICard key={kpi.name} kpi={kpi} />
+              ))}
+            </motion.div>
 
-              {/* Column headers */}
-              <div className="grid gap-1" style={{ gridTemplateColumns: '100px repeat(5, 1fr)' }}>
-                <div /> {/* empty corner */}
-                {H_LABELS.map((h) => (
-                  <div key={h} className="text-center">
-                    <span className="text-[9px] sm:text-[10px] font-mono font-bold uppercase tracking-wider text-white/40">
-                      {h}
-                    </span>
-                  </div>
-                ))}
-              </div>
-
-              {/* Grid rows */}
-              {V_LABELS.map((v, vIdx) => {
-                const vKey = v.split(' ')[0]; // V5, V4, etc.
+            {/* KPI carousel toggles */}
+            <div className="flex justify-center items-center gap-1.5 mt-8">
+              {kpis.map((kpi, i) => {
+                const isSelected = i === kpiIdx;
+                const isVisible = visibleSet.has(i);
                 return (
-                  <div key={v} className="grid gap-1 mt-1" style={{ gridTemplateColumns: '100px repeat(5, 1fr)' }}>
-                    {/* Row header */}
-                    <div className="flex items-center justify-end pr-3">
-                      <span className="text-[9px] sm:text-[10px] font-mono font-bold uppercase tracking-wider text-white/40 text-right">
-                        {v}
-                      </span>
-                    </div>
-
-                    {/* Cells */}
-                    {H_LABELS.map((h, hIdx) => {
-                      const hKey = h.split(' ')[0]; // H1, H2, etc.
-                      const key = `${vKey}×${hKey}` as CellKey;
-                      const isActive = activeCell === key;
-                      const isHighlighted = highlightedCols.includes(hIdx);
-                      const isDimmed = hoveredKPI !== null && !isHighlighted;
-
-                      return (
-                        <button
-                          key={key}
-                          onClick={() => setActiveCell(isActive ? null : key)}
-                          className="relative aspect-square sm:aspect-[4/3] rounded-lg cursor-pointer transition-all duration-300 flex items-center justify-center group"
-                          style={{
-                            backgroundColor: getCellColor(hIdx, vIdx),
-                            opacity: isDimmed ? 0.3 : 1,
-                            boxShadow: isHighlighted
-                              ? '0 0 12px rgba(255, 215, 0, 0.4), inset 0 0 0 2px rgba(255, 215, 0, 0.6)'
-                              : isActive
-                              ? 'inset 0 0 0 2px rgba(255, 255, 255, 0.4)'
-                              : 'none',
-                          }}
-                        >
-                          <span className="text-[8px] sm:text-[9px] font-mono font-bold text-white/40 group-hover:text-white/70 transition-colors">
-                            {vKey}×{hKey}
-                          </span>
-                        </button>
-                      );
-                    })}
-                  </div>
+                  <button
+                    key={kpi.name}
+                    onClick={() => setKpiIdx(i)}
+                    className={`px-3 py-2 rounded-xl text-[11px] font-mono font-bold transition-all duration-300 ${
+                      isSelected ? 'scale-110 z-10' : ''
+                    }`}
+                    style={
+                      isSelected
+                        ? {
+                            backgroundColor: '#FFD700',
+                            color: '#1A1A1A',
+                            boxShadow: '0 4px 20px rgba(255,215,0,0.3)',
+                          }
+                        : isVisible
+                          ? {
+                              backgroundColor: 'rgba(255,215,0,0.10)',
+                              color: '#FFD700',
+                              border: '1.5px solid rgba(255,215,0,0.20)',
+                            }
+                          : {
+                              backgroundColor: 'rgba(255,255,255,0.04)',
+                              color: 'rgba(255,255,255,0.25)',
+                              border: '1px solid rgba(255,255,255,0.08)',
+                            }
+                    }
+                    onMouseEnter={(e) => {
+                      if (!isSelected && !isVisible) {
+                        (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.2)';
+                        (e.currentTarget as HTMLElement).style.color = 'rgba(255,255,255,0.5)';
+                      }
+                    }}
+                    onMouseLeave={(e) => {
+                      if (!isSelected && !isVisible) {
+                        (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.08)';
+                        (e.currentTarget as HTMLElement).style.color = 'rgba(255,255,255,0.25)';
+                      }
+                    }}
+                  >
+                    {kpi.short}
+                  </button>
                 );
               })}
+            </div>
+          </div>
+        </FadeIn>
 
-              {/* Accountability arrow */}
-              <div className="flex items-center gap-3 mt-3 ml-[100px] lg:ml-[120px]">
-                <div className="flex-1 h-[1px] bg-gradient-to-l from-white/20 to-white/5 relative">
-                  <div className="absolute left-0 top-1/2 -translate-y-1/2 w-0 h-0 border-r-[6px] border-r-white/20 border-y-[3px] border-y-transparent" />
+        {/* ── The 5×5 Grid ── */}
+        <FadeIn delay={200}>
+          <div className="mt-24">
+            <h3 className="text-2xl md:text-3xl font-black uppercase tracking-tight text-white mb-2">
+              The Grid. Where the problem lives.
+            </h3>
+            <p className="text-sm text-white/40 mb-10 max-w-lg">
+              Every business runs this grid. Revenue lives in how well it flows. Click any cell to see what happens at that intersection.
+            </p>
+
+            <div className="flex flex-col lg:flex-row gap-8 items-start">
+              <div className="flex-1 w-full">
+                {/* Authorization arrow */}
+                <div className="flex items-center gap-3 mb-3 ml-[100px] lg:ml-[120px]">
+                  <span className="text-[9px] font-mono font-bold uppercase tracking-widest text-white/30">Authorization</span>
+                  <div className="flex-1 h-[1px] bg-gradient-to-r from-white/20 to-white/5 relative">
+                    <div className="absolute right-0 top-1/2 -translate-y-1/2 w-0 h-0 border-l-[6px] border-l-white/20 border-y-[3px] border-y-transparent" />
+                  </div>
                 </div>
-                <span className="text-[9px] font-mono font-bold uppercase tracking-widest text-white/30">Accountability</span>
+
+                {/* Column headers */}
+                <div className="grid gap-1" style={{ gridTemplateColumns: '100px repeat(5, 1fr)' }}>
+                  <div />
+                  {H_LABELS.map((name, hIdx) => (
+                    <div key={name} className="text-center">
+                      <span className={`text-[9px] sm:text-[10px] font-mono font-bold uppercase tracking-wider transition-colors duration-300 ${
+                        highlightedCols.includes(hIdx) ? 'text-[#FFD700]' : 'text-white/40'
+                      }`}>
+                        {H_NUMS[hIdx]} {name}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Grid rows */}
+                {V_LABELS.map((v, vIdx) => {
+                  const vKey = v.split(' ')[0];
+                  return (
+                    <div key={v} className="grid gap-1 mt-1" style={{ gridTemplateColumns: '100px repeat(5, 1fr)' }}>
+                      <div className="flex items-center justify-end pr-3">
+                        <span className="text-[9px] sm:text-[10px] font-mono font-bold uppercase tracking-wider text-white/40 text-right">
+                          {v}
+                        </span>
+                      </div>
+
+                      {H_LABELS.map((_name, hIdx) => {
+                        const hInternal = H_INTERNAL[hIdx];
+                        const hDisplay = H_NUMS[hIdx];
+                        const key = `${vKey}×${hInternal}` as CellKey;
+                        const isActive = activeCell === key;
+                        const isHighlighted = highlightedCols.includes(hIdx);
+
+                        return (
+                          <button
+                            key={key}
+                            onClick={() => setActiveCell(isActive ? null : key)}
+                            className="relative aspect-square sm:aspect-[4/3] rounded-lg cursor-pointer transition-all duration-300 flex items-center justify-center group"
+                            style={{
+                              backgroundColor: getCellColor(hIdx, vIdx),
+                              opacity: isHighlighted ? 1 : 0.4,
+                              boxShadow: isHighlighted
+                                ? '0 0 12px rgba(255, 215, 0, 0.4), inset 0 0 0 2px rgba(255, 215, 0, 0.6)'
+                                : isActive
+                                ? 'inset 0 0 0 2px rgba(255, 255, 255, 0.4)'
+                                : 'none',
+                            }}
+                          >
+                            <span className="text-[8px] sm:text-[9px] font-mono font-bold text-white/40 group-hover:text-white/70 transition-colors">
+                              {vKey}×{hDisplay}
+                            </span>
+                          </button>
+                        );
+                      })}
+                    </div>
+                  );
+                })}
+
+                {/* Accountability arrow */}
+                <div className="flex items-center gap-3 mt-3 ml-[100px] lg:ml-[120px]">
+                  <div className="flex-1 h-[1px] bg-gradient-to-l from-white/20 to-white/5 relative">
+                    <div className="absolute left-0 top-1/2 -translate-y-1/2 w-0 h-0 border-r-[6px] border-r-white/20 border-y-[3px] border-y-transparent" />
+                  </div>
+                  <span className="text-[9px] font-mono font-bold uppercase tracking-widest text-white/30">Accountability</span>
+                </div>
+              </div>
+
+              {/* Cell detail panel — desktop */}
+              <div className="hidden lg:block w-[340px] shrink-0">
+                <AnimatePresence mode="wait">
+                  {activeCell && (
+                    <CellPanel
+                      key={activeCell}
+                      cellKey={activeCell}
+                      onClose={() => setActiveCell(null)}
+                    />
+                  )}
+                </AnimatePresence>
+                {!activeCell && (
+                  <div className="text-sm text-white/20 font-mono text-center pt-8">
+                    Click any cell to explore
+                  </div>
+                )}
               </div>
             </div>
 
-            {/* Cell detail panel — desktop: right side */}
-            <div className="hidden lg:block w-[340px] shrink-0">
+            {/* Cell detail panel — mobile */}
+            <div className="lg:hidden mt-6">
               <AnimatePresence mode="wait">
                 {activeCell && (
                   <CellPanel
@@ -270,70 +393,10 @@ export const Grid = () => {
                   />
                 )}
               </AnimatePresence>
-              {!activeCell && (
-                <div className="text-sm text-white/20 font-mono text-center pt-8">
-                  Click any cell to explore
-                </div>
-              )}
-            </div>
-          </div>
-
-          {/* Cell detail panel — mobile: bottom sheet */}
-          <div className="lg:hidden mt-6">
-            <AnimatePresence mode="wait">
-              {activeCell && (
-                <CellPanel
-                  key={activeCell}
-                  cellKey={activeCell}
-                  onClose={() => setActiveCell(null)}
-                />
-              )}
-            </AnimatePresence>
-          </div>
-        </FadeIn>
-
-        {/* ── 8 KPIs ── */}
-        <FadeIn delay={200}>
-          <div className="mt-20">
-            <h3 className="text-2xl md:text-3xl font-black uppercase tracking-tight text-white mb-2">
-              8 KPIs. One per session.
-            </h3>
-            <p className="text-sm text-white/40 mb-8 max-w-lg">
-              Each Sciensation session takes one KPI from this grid and works it structurally across industries.
-            </p>
-
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
-              {kpis.map((kpi, i) => {
-                const isHovered = hoveredKPI === i;
-                return (
-                  <div
-                    key={kpi.name}
-                    onMouseEnter={() => setHoveredKPI(i)}
-                    onMouseLeave={() => setHoveredKPI(null)}
-                    className={`rounded-xl border p-4 transition-all duration-300 cursor-default ${
-                      isHovered
-                        ? 'bg-[#FFD700]/[0.08] border-[#FFD700]/30 shadow-lg shadow-[#FFD700]/[0.08]'
-                        : 'bg-white/[0.04] border-white/[0.08] hover:border-white/[0.15]'
-                    }`}
-                  >
-                    <div className="flex items-center gap-2 mb-2">
-                      <div className={`w-2 h-2 rounded-full transition-colors duration-300 ${
-                        isHovered ? 'bg-[#FFD700]' : 'bg-white/20'
-                      }`} />
-                      <span className={`text-xs font-bold uppercase tracking-wider transition-colors duration-300 ${
-                        isHovered ? 'text-[#FFD700]' : 'text-white/70'
-                      }`}>
-                        {kpi.name}
-                      </span>
-                    </div>
-                    <p className="text-[12px] text-white/40 leading-relaxed">{kpi.question}</p>
-                  </div>
-                );
-              })}
             </div>
 
-            <p className="text-xs text-white/25 font-mono mt-6 uppercase tracking-wider">
-              8 KPIs · 16-week rotation · One per session · The grid shows where the problem lives
+            <p className="text-xs text-white/25 font-mono mt-8 uppercase tracking-wider">
+              Offers to Orders. Orders back to Offers. The grid shows where the problem lives.
             </p>
           </div>
         </FadeIn>
