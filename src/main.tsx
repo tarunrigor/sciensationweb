@@ -6,6 +6,7 @@ import App from './App';
 import { Journal } from '@/src/components/Journal';
 import { Grids } from '@/src/components/Grids';
 import { Fellowship } from '@/src/components/Fellowship';
+import { Identity } from '@/src/components/Identity';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -15,6 +16,7 @@ createRoot(document.getElementById('root')!).render(
         <Route path="/journal" element={<Journal />} />
         <Route path="/grids" element={<Grids />} />
         <Route path="/fellowship" element={<Fellowship />} />
+        <Route path="/identity" element={<Identity />} />
       </Routes>
     </BrowserRouter>
   </StrictMode>,
