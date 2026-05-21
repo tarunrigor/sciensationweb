@@ -1,0 +1,395 @@
+{
+  "ui": {
+    "eyebrow": "Identity Assessment",
+    "heroLine1": "How Do You",
+    "heroLine2": "See the World?",
+    "subtitle": "This is not a test. There are no wrong answers. Each option describes a real way people think about their career. Pick the one closest to how you actually think today — not how you want to think.",
+    "startButton": "Start the Quiz",
+    "previous": "Previous",
+    "next": "Next",
+    "seeResults": "See Results",
+    "questionOf": "Question {0} of {1}",
+    "answeredOf": "{0} of {1} answered",
+    "yourResult": "Your Result",
+    "breakdownEyebrow": "Question-by-Question Breakdown",
+    "breakdownHeading": "What each answer reveals",
+    "question": "Question {0}",
+    "yourAnswer": "Your Answer",
+    "feedback": "Feedback",
+    "retake": "Retake Quiz",
+    "exploreFellowship": "Explore the Fellowship",
+    "backToHome": "Back to Sciensation",
+    "shortlist": "Shortlist",
+    "shortlisted": "Shortlisted",
+    "viewShortlist": "Review Shortlist ({0})",
+    "backToBrowse": "Back to Browsing",
+    "chooseThis": "Choose This",
+    "exampleLabel": "Example",
+    "optionOf": "Option {0} of {1}",
+    "continue": "Continue",
+    "scoreLabels": {
+      "exceptional": "Exceptional",
+      "strong": "Strong",
+      "developing": "Developing",
+      "emerging": "Emerging"
+    },
+    "insights": {
+      "exceptional": "You see the world through a lens most people never develop. Your instincts are calibrated to the kind of thinking this work demands.",
+      "strong": "Strong foundations with room to sharpen. You have the raw material — the Fellowship will give you the reps to refine it.",
+      "developing": "You're building. Some instincts are there, others need deliberate development. That's exactly what the Fellowship is designed for.",
+      "emerging": "You're early in this journey. That's not a weakness — it's a starting point. The best Fellows often start here and grow the fastest."
+    }
+  },
+  "data": {
+    "maxScorePerQuestion": 8,
+    "questions": [
+      {
+        "id": 1,
+        "text": "You're at a social gathering. Someone from a completely different industry asks, \"What do you do? How's work going?\"",
+        "options": [
+          {
+            "id": "1a",
+            "text": "I say my company name and role. The conversation ends there because I can't explain what I actually do, and I don't ask anything about their work.",
+            "example": "A physiotherapist asks a developer what he does at a house party. \"Software.\" \"Oh, cool.\" Silence. He looks at his phone. She treats patients who can't lift their arm after surgery and has to figure out in 10 minutes whether the problem is muscle, nerve, or fear. She would have found his debugging stories fascinating. He would have been surprised how similar their diagnostic process is. Neither will ever know. He didn't ask."
+          },
+          {
+            "id": "1b",
+            "text": "I say I'm in consulting and tech and it's been a good learning experience. We swap job descriptions and move on. If someone asked me what makes my skills different from anyone else at my level, I wouldn't have an answer.",
+            "example": "A CA asks a product manager what he does. \"Tech consulting, great learning experience.\" \"I'm in audit.\" Both say \"interesting\" and start talking about food. He spends his week figuring out why a client's sales team enters the same data in three systems. She figures out why a company's books don't match bank statements. Same root cause: people built workarounds instead of fixing the process. Neither realizes they're solving the same problem in different buildings."
+          },
+          {
+            "id": "1c",
+            "text": "I explain what pulled me into this work and what I'm learning. I'm genuinely curious about their field, but the conversation stays polite and separate. It doesn't cross my mind to ask whether their problems look like mine.",
+            "example": "A dentist asks a data engineer what she does. \"I build data systems for companies. Got into it because I wanted to understand how businesses track operations.\" He mentions he runs a clinic. She says something polite and moves on. He orders dental supplies once a month by gut feel, sometimes runs out of composite filling mid-procedure, and has no idea which treatments make him money. She builds systems that answer exactly these questions. She never thought to ask about his clinic's operations."
+          },
+          {
+            "id": "1d",
+            "text": "I have a story that connects my career moves and it comes out well in relaxed settings. But if a recruiter pressed me or my parents asked the same question at dinner, I'd drop the story and fall back on job title and salary. The conversation is friendly but we each stay in our own worlds.",
+            "example": "A graphic designer asks a business analyst what he does at a friend's birthday. \"I chose this over a bank job because I wanted real skills fast. One year in, I'm running client projects where I sit with the CEO and figure out why his factory's output dropped 20%.\" The designer is impressed. Next week, his father asks the same question. \"Consulting.\" \"How much?\" \"Enough.\" He changes the subject. The story works when nothing is at stake. It collapses when someone pushes back."
+          },
+          {
+            "id": "1e",
+            "text": "I can explain why I chose this path, what specific skill I'm building, and why that skill is getting more valuable. I ask them what problems they deal with, not what their title is, because I've noticed different industries run into the same problems and I want to check if theirs connects to something I'm working on.",
+            "example": "A restaurant owner asks an operations consultant what she does. \"I help manufacturing companies figure out why orders take 3 days to ship when they should take 6 hours. Last client, everyone blamed the warehouse. Turned out nobody updated inventory counts after returns.\" Then: \"Do you deal with food waste? Do you know at the start of the week how much chicken to buy, or do you guess and throw out what's left?\" The owner starts sharing spoilage numbers. Root cause might be the same: bad data, not bad operations."
+          },
+          {
+            "id": "1f",
+            "text": "I talk about the direction my career is headed, not a list of things I've done. I know what I'm good at and why that combination is hard to hire for. I steer the conversation into their field because I want to hear something that contradicts how I currently think.",
+            "example": "A logistics manager asks a systems architect what he does. \"I redesign how growing companies run. I'm strong on tech and building commercial judgment on top. Most people can do one. Having both means I sit with a CEO on margins, then go fix the database causing the margin problem.\" Then: \"Everyone says logistics is about speed. But my client's customers care about knowing exactly when delivery arrives, not speed. Is speed what actually matters?\" The manager says \"No, predictability. Fast but unpredictable kills us.\" That reframe changes how the architect thinks about his client's delivery system."
+          },
+          {
+            "id": "1g",
+            "text": "I talk about where I'm headed, not where I've been. I can show the math on my career bet: what I gave up, what I built, what it's worth now. I bring specific problems from my work into the conversation because I've gotten usable ideas from people in different industries before.",
+            "example": "A textile manufacturer asks a program manager what she does. \"I run client operations end to end. Took home 20k a month for two years while batchmates earned 40k. But I was learning to read P&Ls, manage delivery, and tell CEOs why their numbers were wrong. Now I bill more per month than most of them earn in three.\" Then: \"My client sells custom packaging. Buyers change specs after production starts. How do you handle it when someone changes a fabric order after cutting?\" The manufacturer says \"We price the flexibility in. Customer pays 8% more, we keep buffer fabric.\" Selling flexibility instead of fighting changes. She can use that next week."
+          },
+          {
+            "id": "1h",
+            "text": "I don't describe my role. I describe the specific problem I solve, and it's a problem most people recognize the moment I say it. I ask them what's broken in their industry, because the answer has changed my work more than once.",
+            "example": "A school principal asks a business architect what she does. \"I fix the thing that breaks every company when it grows. At 10 people, the founder knows everything. At 50, Monday decisions reach half the team by Thursday. I rebuild how information moves.\" She asks: \"Does this happen in schools?\" The principal describes the June handover: when a child moves from Class 5 to 6, the new teacher starts from scratch. Everything the old teacher learned about that child's attention span, home situation, and fears disappears. The architect heard the same problem last month from a hospital administrator. Third time she's seen this pattern."
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "text": "You just finished a piece of work. Your manager reviews it and says, \"Looks good, let's send it to the client.\" Something about it bothers you.",
+        "options": [
+          {
+            "id": "2a",
+            "text": "My manager said it's good. I send it. If the task is complete and the person above me approved it, that's the end of the process for me.",
+            "example": "A junior architect finishes floor plans for a small office renovation. The senior says \"send it.\" She sends it. Three weeks later the client calls: the server room sits right next to the kitchen. Every time the kitchen exhaust runs, hot humid air seeps through the shared wall and condenses on the cold server equipment. Machines start corroding. She'd drawn both rooms on the plan but never asked what happens when hot air meets cold metal. The proximity problem was on her screen the whole time."
+          },
+          {
+            "id": "2b",
+            "text": "I check it against a similar deliverable from last time. Same format, same structure. It matches, so I send it. Something nags at me but I can't place it, and the template check passed.",
+            "example": "A copywriter finishes a campaign brief for a health drink brand. She compares it to the previous quarter's brief. Same sections, same flow. Looks right. She sends it. The client comes back: \"This is written for our old audience. We told you last month we're targeting gym-goers now, not families.\" The brief matched the template perfectly. The market had changed and the template hadn't. The comparison caught the format. It missed the thinking."
+          },
+          {
+            "id": "2c",
+            "text": "I feel something is off but I can't name exactly what. I send it because my manager approved it. Later, when I see the client's reaction, I realize what was wrong. I could sense the gap but couldn't diagnose it in time.",
+            "example": "A junior interior designer presents a living room layout to the client. His mentor says \"fine, send it.\" He sends it, but it nags at him. Two days later the client says \"the room feels cramped.\" He looks again and realizes he placed the sofa against the window wall. Room dimensions were fine. The sofa blocked all the natural light, so the room felt half its actual size. He'd sensed something was wrong but couldn't pin down that light, not space, was the issue. The diagnosis arrived two days late."
+          },
+          {
+            "id": "2d",
+            "text": "After I'm done, I can point to what's weak. The analysis is right but the framing won't land with this audience. I mention it to my manager but don't push hard. If they say send it, I send it.",
+            "example": "A financial analyst finishes a quarterly report for the CFO. His manager says \"looks good.\" He knows the numbers are right but the summary uses internal shorthand the board won't understand. He mentions it. His manager says \"the CFO will translate.\" He sends it. At the board meeting, the CFO spends 15 minutes explaining what the summary means. Three board members lose attention. The analyst was right about the problem. He just didn't push hard enough to fix it before it left the room."
+          },
+          {
+            "id": "2e",
+            "text": "I know what good looks like for this type of work. I can name exactly where this one falls short and why. One section adds confusion without adding value. I tell my manager: this part should be cut or rewritten before we send it.",
+            "example": "A structural engineer reviews her own beam calculations for a warehouse. The lead says \"these look fine.\" She says: \"Numbers are correct but I over-specified the steel grade for the mezzanine supports. Load on those beams is 40% below what this grade handles. If the client prices this, they'll spend 15% more on steel they don't need. I want to simplify before we send it.\" She saw the unnecessary cost because she holds a clear picture of what each beam actually needs to carry. The engineer next to her missed it because he only checked the math."
+          },
+          {
+            "id": "2f",
+            "text": "I caught the weak section while I was still building it and tried to fix it before showing anyone. When my manager says ship it, I point to the specific part and say: \"This section tries to cover too much. Can I cut it in half? It'll be shorter but it'll actually land.\"",
+            "example": "A chef is plating a tasting menu dish. The head chef tastes it and says \"send it out.\" The sous chef says: \"The sauce has too much happening. Star anise is fighting the tamarind. Neither comes through clean. If I pull the star anise, you taste the tamarind clearly and the dish is better. Let me replate one.\" She caught the problem while cooking, not after tasting. She's not defending her work. She's correcting it. The head chef pauses, tastes again, and agrees. The replated dish goes out 3 minutes late but lands perfectly."
+          },
+          {
+            "id": "2g",
+            "text": "I see something nobody else has flagged. Not a formatting problem. The recommendation won't survive contact with the client's actual situation because we're assuming something about their operations that we haven't verified. I raise it even though my manager thinks it's ready.",
+            "example": "A civil engineer reviews a drainage plan for a new housing colony. The project manager says \"approved, submit to the municipality.\" The engineer says: \"This plan assumes the ground slopes east, based on a survey from 8 months ago. The construction next door has been dumping excavated soil on our eastern boundary for months. If that soil changed the ground level even 30cm, our drainage runs uphill and the colony floods in the first monsoon. I need to re-check the site before we submit.\" Everyone else was looking at the document. She was thinking about the ground."
+          },
+          {
+            "id": "2h",
+            "text": "I've already hunted for the weakest part before showing anyone. I also know when to stop. One section needs rework and I can say exactly why. The rest is right and more polishing won't improve it. I fix the weak part, leave the rest alone, and send it.",
+            "example": "A documentary filmmaker finishes a rough cut. The producer says \"this works, let's lock it.\" The filmmaker says: \"The first 40 minutes are tight. But the interview at minute 47 doesn't earn its place. The subject repeats what we already showed through the factory footage. If I cut those 3 minutes and let the footage carry that section, the film is stronger.\" She spent an hour going through every section before showing the producer. Found one problem. Knows why it's a problem. Knows the other 55 minutes are done. Fixes 3 minutes. Ships."
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "text": "A friend who graduated with you just got a 40% raise by moving to a large company. Over coffee, they tell you: \"You're smart enough to do the same. Why stay where you are?\"",
+        "options": [
+          {
+            "id": "3a",
+            "text": "They're probably right. I'd earn more. My current place is smaller, pays less, and nobody recognizes the name. Maybe I should start applying.",
+            "example": "A junior mechanic at a small garage hears his friend got hired at a Maruti authorized service center for double the salary. He thinks: \"The pay is low and nobody knows this garage.\" He starts sending resumes. At the small garage, he diagnoses engine problems from scratch because there's no diagnostic computer. At Maruti, his friend plugs in a machine and follows the screen. The mechanic is building a diagnostic skill his friend will never develop. He can't see it because the salary gap is all he's measuring."
+          },
+          {
+            "id": "3b",
+            "text": "I know I'm doing more here than I would there. But I can't explain exactly why that matters. When they push on salary, I don't have a good answer.",
+            "example": "A nurse at a small rural hospital hears her classmate earns twice as much at Fortis in the city. She knows she handles more variety: last week she managed a snakebite, a diabetic emergency, and a complicated delivery all in one shift, alone, because there's no specialist on call. At Fortis, her classmate takes vitals and follows protocols. She senses she's learning something different. But when her classmate says \"you're underpaid,\" the variety argument feels thin against a real number."
+          },
+          {
+            "id": "3c",
+            "text": "I'm starting to notice that I get to do things here that my friend would never be allowed to touch at their company. I can see my profile is becoming unusual. But I can't fully explain it yet, and the salary difference still bothers me.",
+            "example": "An apprentice baker at a small bakery hears his friend earns 3x at a large biscuit factory. He knows he gets to experiment. Last month he developed a new sourdough formula by accident because the owner let him try variations for a week. At the factory, his friend runs the same conveyor line every day. The work is building something different. He can feel it. But when someone asks \"so where is this going?\" he doesn't have a clear answer. The experiments are real. The path connecting them isn't visible yet."
+          },
+          {
+            "id": "3d",
+            "text": "After a good week, I know exactly why I'm here. The freedom, the experiments, the unusual profile. After a bad week, I look at my friend's salary and think maybe they're right. I keep my options open just in case.",
+            "example": "A young teacher at an experimental school designs her own curriculum, tests teaching methods, and measures what works. After a month where her students' reading scores jump 30%, she's certain this is the right place. Then the school runs out of art supplies and asks her to teach with just a blackboard for two weeks. That evening she scrolls through job postings at established schools that pay 50% more. The conviction is real. It doesn't survive a tough stretch. Good months make the story. Bad months break it."
+          },
+          {
+            "id": "3e",
+            "text": "I know why I'm here and I can explain it. I get to diagnose, design, and own outcomes end to end. Nobody at a large company at my level gets that. My profile sits at an intersection that almost nobody else occupies. The salary gap is real today, but what I'm building closes it and then passes it.",
+            "example": "A sous chef at a small restaurant hears her friend earns double as a line cook at a hotel chain. She says: \"At the hotel, she preps what the head chef decides. Here, I design the menu, source ingredients, cost each dish, and watch whether customers order it again. Nobody at a hotel chain at her level touches menu design. I'm building the skill to run my own kitchen. The pay gap closes when I get there. She'll still be prepping what someone else planned.\" The argument holds at coffee and at the dinner table."
+          },
+          {
+            "id": "3f",
+            "text": "I've stopped thinking about whether to stay. I'm using this environment to run experiments I designed myself. Every tough project teaches me something I couldn't get elsewhere. I've deliberately dropped the parts of my profile that look like everyone else's and doubled down on what's unique.",
+            "example": "A wildlife photographer working freelance in Ranthambore hears his college friend earns 3x as a studio photographer in Mumbai. He says: \"Last month I spent 6 days tracking a tigress. Got nothing for 4 days. On day 5, I predicted where she'd bring her cubs based on water source patterns I'd been mapping. Got the shot. National Geographic picked it up. He shoots product photos in a controlled studio. He earns more now. But he's building a skill 10,000 people have. I'm building one that maybe 50 in India have. Every failed trip teaches me animal behavior that makes the next trip better.\""
+          },
+          {
+            "id": "3g",
+            "text": "Each project I take builds on what the last one taught me. I'm developing an approach that didn't exist before I started testing it. I can trace the chain: project 1 taught me X, which made project 2 possible, which produced Y. My friend's raises are linear. My career is compounding. I've started explaining this niche to others because it doesn't have a name yet.",
+            "example": "A furniture maker who builds custom pieces hears his friend earns 4x as a construction PM. He says: \"My first commission was a simple bookshelf. The client wanted reclaimed wood, so I learned salvaged teak. Second client saw that and asked for a dining table in the same material. Third wanted an office fit-out. Each project taught me something the next one needed. Now architects call me for sustainable custom furniture in commercial spaces. There are 50,000 construction PMs and maybe 20 people in this country who do what I do. I can show you exactly how each project built the next.\""
+          },
+          {
+            "id": "3h",
+            "text": "I built something that didn't exist before. The experiments I ran, the methodology I developed, the category I created. None of this was here when I started. My friend is comparing salaries. I'm not on the same axis anymore. If someone offered me double to move, I'd calculate what it costs in momentum, and the answer would have to be very convincing.",
+            "example": "A potter in Khurja started as an apprentice making standard chai cups. While others copied existing designs, she experimented with local clay mixtures and figured out a firing technique that produces a specific blue glaze nobody else can replicate. A Delhi architect featured her pieces in a hotel project. Now interior designers call her directly. Other potters in Khurja have started trying to copy her technique. She turned down a salaried position at a ceramic company last year. \"They want to buy what I've built for a monthly salary. What I've built gets more valuable every month I keep building it. Why sell for a fixed price?\""
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "text": "You're in a meeting with a client's CEO. They start describing a business problem that has nothing to do with your assigned work.",
+        "options": [
+          {
+            "id": "4a",
+            "text": "I note it but it's not my work. I'm here for a specific task. The CEO's problem is a business issue and I'm the tech person. I wait for the conversation to come back to my scope.",
+            "example": "An electrician is rewiring a restaurant kitchen. The owner mentions the walk-in freezer keeps failing and food spoils every week. The electrician finishes the wiring and leaves. The freezer's compressor was cycling 40 times a day because the door seal was worn and the thermostat was overcompensating. He would have spotted it in minutes if he'd looked at the power draw on the panel he just installed. But he was there to rewire, not to fix freezers. The spoilage continued for two more months until another technician found the seal."
+          },
+          {
+            "id": "4b",
+            "text": "I listen because it's interesting to hear the CEO talk about the business. After the meeting I go back to my assigned work. I might mention the CEO's problem to my manager in passing.",
+            "example": "A graphic designer is reviewing logo options with a startup founder. The founder starts talking about how customers abandon the signup flow halfway through. The designer thinks \"that's a UX problem, not mine\" and takes a mental note. She mentions it to the product team in the hallway. But the signup screens are failing because the visual hierarchy is wrong: the \"continue\" button is the same size and color as three other elements on the page. She would have spotted that in 10 seconds if she'd looked. She just never looked because it wasn't her assignment."
+          },
+          {
+            "id": "4c",
+            "text": "I realize this business problem might connect to my technical work. Maybe the data from this problem should show up in what I'm building. I note it down and think about it later.",
+            "example": "A web developer is building an e-commerce site for a clothing brand. During a meeting, the brand owner complains that returns are killing margins: 30% of jeans get returned. The developer thinks: \"Maybe I should add a better size guide.\" He notes it. He doesn't ask what the actual return reasons are. If he had, he'd have learned that 80% of returns happen because customers order two sizes and keep one. The fix isn't a size guide. It's a \"try before you buy\" deposit flow. The connection between his work and the problem is forming, but he's not pulling the thread."
+          },
+          {
+            "id": "4d",
+            "text": "I ask the CEO one follow-up question about the problem. Back at my desk, I wonder if I should factor it into my work. But I'm not sure if spending time outside my assigned scope is expected or overstepping.",
+            "example": "An accountant does monthly bookkeeping for a garment exporter. The owner mentions container shipments keep getting delayed at the port, costing about 2 lakh per day. The accountant asks \"how often does this happen?\" The owner says \"every other shipment.\" He writes it down. He could analyze the pattern from shipping invoices he already processes: which ports, which months, which freight forwarders have the worst delays. The data is in his hands. But he's not sure if that's his job, so he goes back to the ledger. The pattern sits unanalyzed in invoices he touches every month."
+          },
+          {
+            "id": "4e",
+            "text": "I ask the CEO to walk me through the problem in detail. \"What actually happens step by step?\" I realize my technical work should start from this business workflow, not from the data I was given. The business context changes my design.",
+            "example": "A freelance carpenter is building storage shelves for a bakery. The baker complains she wastes an hour every morning moving ingredients from the storeroom to the prep counter. The carpenter says: \"Show me your morning routine. What do you grab first?\" He watches her walk back and forth between storeroom and counter six times in 30 minutes. He redesigns the shelf layout so the five most-used ingredients are within arm's reach of the prep station. Shelves cost the same. The baker saves 45 minutes every morning. He designed for how she works, not where she wanted shelves."
+          },
+          {
+            "id": "4f",
+            "text": "I ask questions the CEO doesn't expect from someone in my role. \"What does your team check before they release an order? Where do they wait for someone else?\" I realize the CEO's problem and my assigned work are the same problem seen from different angles. I propose a change to both.",
+            "example": "An IT technician is setting up new computers at a mid-sized clinic. The clinic head mentions patients wait 40 minutes between registration and seeing the doctor even when the doctor is free. The technician says: \"Can I watch what happens at the front desk for 20 minutes?\" He sees the receptionist write patient details in a paper register, then physically carry the file to the doctor's room. The doctor sits idle because the file hasn't arrived. He sets up a shared patient queue the doctor sees on her screen in real time. The 40-minute wait drops to 5. Registration problem and computing problem were the same problem."
+          },
+          {
+            "id": "4g",
+            "text": "I ask to spend time with the team that has the problem. I watch what they actually do, not what the CEO thinks they do. The real bottleneck is different from what the CEO described. My solution uses my tech, business understanding, and process knowledge together. A specialist in just one of those wouldn't have found it.",
+            "example": "A plumber is called to fix low water pressure on the second floor of a small hotel. The manager says \"the pump is probably old.\" The plumber says: \"Let me watch the water usage for a morning.\" He finds pressure drops at 7am when all 12 rooms shower simultaneously. The pump is fine. The building has one main supply line and the pipe diameter can't handle peak demand. He proposes splitting supply into two zones with a rooftop tank for upper floors. The manager didn't know to ask for this. The plumber saw it because he looked at the whole water system, not just the pump."
+          },
+          {
+            "id": "4h",
+            "text": "I've been doing this at every client meeting for months. Every time the CEO mentions a business problem, I use it as the starting point for my work. The solutions I build don't just fix the technical issue. They change how teams work together. The CEO didn't ask for that. But they recognize it when they see it.",
+            "example": "A tailor in a small town has been making custom blouses for 15 years. Her customers used to bring fabric and measurements. Over time, they started describing their real problems: \"Nothing in shops fits my broad shoulders and narrow waist.\" \"I need something for my daughter's wedding that looks expensive but costs under 2000.\" She doesn't just take measurements anymore. She asks about the occasion, the budget, what bothers them about current clothes. Her cutting skill, fabric knowledge, and customer understanding all feed into each piece. A fashion-school tailor cuts more precisely. But customers don't go to the fashion-school tailor. Her blouse solves a problem the customer couldn't put into words."
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "text": "A problem at your client keeps coming back every quarter. You've been asked to fix it again.",
+        "options": [
+          {
+            "id": "5a",
+            "text": "I fix it the same way I fixed it last time. Each time it comes back, I treat it as a new task. I don't ask why it keeps happening.",
+            "example": "A mechanic keeps replacing brake pads on a delivery van every 3 months. Normal interval is 12 months. Each time, he replaces the pads, charges for the work, and the van drives off. He never asks why the pads wear out 4x faster than they should. The driver brakes 200 times a day because his route goes through a market with speed bumps every 50 meters. Changing the route would fix the problem permanently. Replacing the pads fixes the symptom until next quarter. He's done good work. He just hasn't asked the right question."
+          },
+          {
+            "id": "5b",
+            "text": "I fix it, but I notice this is the third time. I mention to my manager that it keeps happening. I don't dig into why because I'm focused on completing the fix.",
+            "example": "An accountant reconciles the same bank-to-ledger mismatch every quarter for a retail client. She mentions to her manager: \"This keeps happening.\" The manager says \"just reconcile it.\" She reconciles it. She doesn't investigate that the mismatch always starts in the second month of the quarter, when franchisees submit sales data late and the cutoff date creates a systematic gap. The pattern is visible in the data she already processes. She just hasn't looked for it. She's noticed the recurrence. She hasn't yet investigated it."
+          },
+          {
+            "id": "5c",
+            "text": "I notice the pattern. This problem comes back every quarter under similar conditions. I wonder whether something structural is causing it. But I fix the symptom again because that's what I was asked to do.",
+            "example": "A pest control technician treats the same warehouse for rodents every 3 months. On his third visit, he notices the infestation always starts in the northeast corner. He writes it in his report. He doesn't walk around the back of the building to find that the neighbor's grain storage shares a wall with a 2-inch gap at the base. Rats enter through that gap every time the neighbor gets a new grain shipment. He spotted the pattern in his data. He didn't trace it one step further to the source."
+          },
+          {
+            "id": "5d",
+            "text": "I map out what's connected to the problem. It's not a one-off. It's connected to how two teams hand off work to each other. I propose a structural fix. But when my manager says \"just fix it the usual way,\" I don't push.",
+            "example": "A physiotherapist sees the same patient every 3 months for lower back pain. She maps the pattern: the pain starts whenever work travel increases. She tells the patient: \"Your back problems are connected to 8-hour flights, not your desk posture. If you do these stretches during travel weeks, you won't need to come back every quarter.\" The patient says \"just fix the pain for now.\" She does the treatment. The structural fix was right. She didn't push when the patient resisted. Three months later, he's back on her table with the same pain."
+          },
+          {
+            "id": "5e",
+            "text": "I trace the recurring problem to the feedback loop that causes it. The real issue isn't the quarterly symptom. It's how information flows between two parts of the system. I present the root cause and propose fixing the structure, not the symptom. I also recognize that this kind of diagnosis is the specific skill I'm getting better at.",
+            "example": "A school counselor sees the same spike in student stress complaints every October. Everyone calls it \"exam stress.\" She traces the loop: administration sets the mid-term schedule without consulting teachers, teachers cram revision into two weeks, homework doubles, students sleep less, attention drops, teachers assign more homework to compensate. The problem isn't stress. It's how the exam schedule gets decided. She presents the loop to the principal and proposes changing the scheduling process. She also knows this systems-level diagnosis is what separates her from \"just a counselor.\""
+          },
+          {
+            "id": "5f",
+            "text": "I find the leverage point: the one place in the system where a small change prevents the problem from recurring. I also see that the problem exists because two groups that should be talking to each other aren't. I position myself at that gap.",
+            "example": "A supply chain coordinator sees the same delivery delays every monsoon season. Everyone blames the roads. She checks the data: the delay starts 2 weeks before the monsoon, when procurement pre-orders extra raw material to stockpile. This floods the warehouse, slowing picking for regular orders. Procurement and warehouse are in different reporting lines and never talk. The leverage point isn't the roads. It's a 30-minute weekly sync between two teams that don't know what the other is doing. She's the only person who sees both sides because she reads both procurement orders and dispatch logs."
+          },
+          {
+            "id": "5g",
+            "text": "I see that the recurring problem isn't just this client's issue. It reflects how businesses at this growth stage work. I've seen the same pattern at multiple clients. I'm building an approach to diagnose and fix this class of problem. I also see that the ability to fix this is becoming more valuable because more companies are hitting this stage.",
+            "example": "A farm consultant keeps getting called for the same issue: dairy yields drop every summer. Most consultants prescribe better feed. He noticed that across 8 farms, the drop starts when shed temperature rises above 30 degrees. The heat reduces feed intake. Cows eat less, so they produce less. The fix isn't better feed. It's better ventilation. He's seen this at enough farms to predict the drop before it happens and fix ventilation before summer. As dairy cooperatives push for higher yields nationally, the consultants who solve systemic yield problems will be in far more demand than the ones who prescribe supplements."
+          },
+          {
+            "id": "5h",
+            "text": "I don't just fix the recurring problem. I change how the client thinks about this type of problem. I show them the mental model that keeps producing it. Each time I do this at a different client, I get better at recognizing the pattern faster. I'm building a practice around a class of problem that most people treat as one-offs.",
+            "example": "A structural engineer keeps getting called to inspect cracks in newly built apartments. Other engineers patch the cracks and test the concrete. She noticed that across 12 buildings, the cracks always appear at the same joints within 18 months of people moving in. The concrete is fine. The problem: builders design for static weight but nobody accounts for the dynamic stress of water tanks on the terrace being filled and emptied daily. The building flexes each cycle, and after 500 cycles the joints crack. She doesn't patch cracks anymore. She inspects new buildings for dynamic load patterns before anyone moves in. Builders who've worked with her once never make this mistake again."
+          }
+        ]
+      }
+    ],
+    "rubric": [
+      {
+        "questionId": 1,
+        "scoring": {
+          "1a": 1,
+          "1b": 2,
+          "1c": 3,
+          "1d": 4,
+          "1e": 5,
+          "1f": 6,
+          "1g": 7,
+          "1h": 8
+        },
+        "feedback": {
+          "1a": "You describe yourself by title and move on. Professional conversations don't register as opportunities yet. Most people start here. Next shift: notice that the person across from you solves problems too. Their problems might teach you something about yours.",
+          "1b": "You swap descriptions and find common ground in the familiar. You know there's more to your work than the label, but the words aren't there yet. Next shift: instead of describing the role, try explaining what pulled you into this work and what you're learning from it.",
+          "1c": "You bring genuine curiosity and can explain your work clearly. The conversations are good but stay in safe territory. Next shift: start asking what problems the other person deals with, not just what their role is. Different industries often face the same problems in disguise.",
+          "1d": "You carry a real story about your career in relaxed settings. When the stakes rise, the story drops and the title takes over. Next shift: test the story in harder rooms. When a recruiter pushes or a family member questions, hold the narrative. If it breaks, the weak point shows you what needs strengthening.",
+          "1e": "You know what you're building, why it's valuable, and you actively look for connections across industries. Your story is stable and specific. Next shift: start seeking people who think differently from you, not just people in different industries. Find perspectives that challenge your current frame, not just expand it.",
+          "1f": "You use conversations to challenge your own thinking, not just learn about others. You know what makes your profile rare and you say it plainly. Next shift: start tracking which conversations actually changed your work. Build a small set of people across different fields that you return to regularly, not just meet once.",
+          "1g": "You carry proof. You can trace the math on your career bet and show the returns. Your conversations across industries produce ideas you use the next week. Next shift: start describing the problem you solve in terms any listener recognizes instantly, without industry jargon. When you do that, the conversation becomes about the pattern, not about you.",
+          "1h": "You describe the problem you solve, not the role you hold, and the problem is one most people recognize immediately. Conversations with people in unrelated fields have changed your work more than once. You're operating at the highest level on these dimensions. Your growth now: help others develop the same clarity you carry, so they can describe their own work this way."
+        }
+      },
+      {
+        "questionId": 2,
+        "scoring": {
+          "2a": 1,
+          "2b": 2,
+          "2c": 3,
+          "2d": 4,
+          "2e": 5,
+          "2f": 6,
+          "2g": 7,
+          "2h": 8
+        },
+        "feedback": {
+          "2a": "You check for completion. If someone above you approved it, the process ends there. Most people start here. Next shift: after your next deliverable, before anyone reviews it, ask yourself one question. \"Does this look like the best version I've seen of this type of work?\" Just the comparison starts building the eye.",
+          "2b": "You check against past examples and templates. If it matches, it feels right. Next shift: remember that templates capture format, not thinking. Next time something nags you, pause and try to name what's off. Even if you can't fix it yet, naming it is the first step.",
+          "2c": "You sense when something is off but can't always name it. The instinct is developing faster than the vocabulary. Next shift: when that feeling hits, stop and ask three things. Who is the audience? What do they need to decide after reading this? Does the weakest section help them decide? Naming the audience sharpens the diagnosis.",
+          "2d": "You can point to what's weak and explain why. You mention it but don't push when someone senior disagrees. The diagnosis is right. Next shift: practice saying \"I think this specific section needs rework before we send it, here's why\" and hold the position. The judgment is already there. The conviction needs to match it.",
+          "2e": "You hold a clear picture of what good looks like for this type of work. You name exactly where yours falls short and why. Next shift: start catching the gap while you're still building, not after. If you feel the work drifting from the standard mid-execution, change course before finishing. That's the difference between reflection after the work and reflection during it.",
+          "2f": "You catch problems while building and fix them before showing anyone. When challenged, you point to the specific section and explain what's wrong. Next shift: look for the thing nobody else in the room has flagged. Not formatting or clarity, but whether the recommendation survives contact with the client's actual situation. That takes holding business context and technical quality in the same frame.",
+          "2g": "You see what others miss. Not surface problems but structural ones: assumptions that haven't been verified, conditions that changed since the data was gathered. Next shift: know when to stop too. Hunt for the weakest part before showing anyone, but also recognize when the rest is strong enough to ship. The hardest judgment isn't finding problems. It's knowing when further refinement serves the work versus your own need to keep checking.",
+          "2h": "You hunt for the weakest part before showing anyone, and you know when the rest is done. You don't polish past the point where it stops improving. Each deliverable sharpens your definition of what \"good\" means for that type of work. Your growth now: help others develop the same quality eye you carry, so they catch these gaps in their own work before anyone else sees it."
+        }
+      },
+      {
+        "questionId": 3,
+        "scoring": {
+          "3a": 1,
+          "3b": 2,
+          "3c": 3,
+          "3d": 4,
+          "3e": 5,
+          "3f": 6,
+          "3g": 7,
+          "3h": 8
+        },
+        "feedback": {
+          "3a": "You see the salary gap and it looks like falling behind. The agency and experimentation you have access to haven't registered as valuable yet. Most people start here. Next shift: compare what you do in a week to what your friend does. Not the pay. The tasks. The freedom. The problems you get to touch. That comparison tells a different story.",
+          "3b": "You know you're doing more, but when someone pushes on salary, you don't have the words. Next shift: pick one specific thing you did last month that your friend's role would never let them touch. Name it. Practice saying it out loud. The argument starts with one concrete example, not a general feeling.",
+          "3c": "You can feel that your profile is becoming unusual. The experiments, the freedom, the range of what you touch. When someone asks \"where is this going?\" you don't have a clear answer yet. Next shift: connect the unusual profile to a specific outcome. \"I'm building the skill to ___\" finishes the sentence that makes the path visible.",
+          "3d": "After a strong week, the conviction is real. After a tough one, the salary comparison wins. Next shift: write down why you're here during a good week. Read it during a bad one. If the reasoning doesn't hold, the problem is the reasoning. If it does hold, the problem is that conviction isn't durable yet. Durability comes from evidence, not enthusiasm.",
+          "3e": "You know why you're here, you can explain it, and the explanation holds under pressure. You see that your profile sits at an intersection most people can't reach. Next shift: stop explaining why you stayed and start running experiments nobody asked for. The agency is yours. Use it to build something only this environment makes possible.",
+          "3f": "You've stopped debating whether to stay. You're using the environment as a lab, running your own experiments, and deliberately building what makes your profile unique. Next shift: connect the experiments to each other. Each one should build on what the last one taught you. The compounding starts when the experiments form a chain, not a list.",
+          "3g": "You can trace the chain: project 1 taught X, which made project 2 possible, which produced Y. Your career is compounding and you can show the math. Next shift: calculate what it would cost in momentum if someone offered you double the salary tomorrow. That calculation separates a strong position from an unbreakable one.",
+          "3h": "You built something that didn't exist before you started. The experiments, the methodology, the category. The salary comparison doesn't apply because you're not on the same axis anymore. Your growth now: help others see the same compounding logic in their own work, so they stop measuring themselves by salary and start measuring by trajectory."
+        }
+      },
+      {
+        "questionId": 4,
+        "scoring": {
+          "4a": 1,
+          "4b": 2,
+          "4c": 3,
+          "4d": 4,
+          "4e": 5,
+          "4f": 6,
+          "4g": 7,
+          "4h": 8
+        },
+        "feedback": {
+          "4a": "You see your scope clearly and stay inside it. The CEO's business problem didn't register as something connected to your work. Most people start here. Next shift: next time someone describes a problem outside your scope, ask one question about it. Just one. See if the answer connects to anything you're building.",
+          "4b": "You listen and find it interesting but don't connect it to your work. Next shift: after the next meeting where someone mentions a problem outside your scope, write down one sentence. \"This problem might connect to my work because ___.\" Even a guess starts building the muscle that turns proximity into insight.",
+          "4c": "You can see that the business problem might connect to your technical work. The connection is forming. Next shift: pull the thread. Ask \"what actually happens step by step?\" The detail is where the real connection between business problem and technical solution shows up. The note you wrote down is the start. The follow-up question makes it useful.",
+          "4d": "You ask a follow-up question and sense the connection. You're not sure if going outside your assigned scope is expected or overstepping. Next shift: propose it. \"I think this connects to what I'm building. Here's how.\" The worst that happens is someone says \"stay focused.\" The best is that your work solves a bigger problem.",
+          "4e": "You ask the CEO to walk through the problem in detail. The business context changes your technical design because you're starting from the workflow, not from the spec. Next shift: start asking questions the CEO doesn't expect from someone in your role. Look for where two teams or two processes should be talking to each other but aren't. That gap is usually where the real problem lives.",
+          "4f": "You ask questions outside your expected role and find that the CEO's problem and your assigned work are the same problem from different angles. Next shift: go sit with the team that has the problem. What you hear from the people doing the work will be different from what the CEO described. The real bottleneck is usually in the gap between what leadership sees and what the ground floor does.",
+          "4g": "You spend time with the team, watch what they actually do, and find a bottleneck different from what was described. Your solution draws on tech, business understanding, and process knowledge together. Next shift: start noticing the pattern across clients. The same class of problem shows up at every growing company, wearing different costumes. Recognizing the pattern turns a one-time fix into a repeatable skill.",
+          "4h": "Every client meeting starts with the business problem, not the technical scope. Your solutions change how teams work together because you've built the habit of seeing the whole system. Your growth now: do this so consistently that others learn the approach by watching you work, and start applying the same whole-system lens to their own clients."
+        }
+      },
+      {
+        "questionId": 5,
+        "scoring": {
+          "5a": 1,
+          "5b": 2,
+          "5c": 3,
+          "5d": 4,
+          "5e": 5,
+          "5f": 6,
+          "5g": 7,
+          "5h": 8
+        },
+        "feedback": {
+          "5a": "You fix what's in front of you. Each time the problem returns, it's a new task. Most people start here. Next shift: next time you fix a recurring problem, ask one question. \"Is this the same problem as last time, or a different one?\" If it's the same, the fix isn't working. That's worth investigating.",
+          "5b": "You notice the pattern and mention it. You don't dig in because the assignment is to fix, not investigate. Next shift: spend 30 minutes after the next fix looking for what the recurring instances have in common. Time of quarter, team involved, workflow step. The pattern is in the data you already have.",
+          "5c": "You see the pattern and wonder if something structural causes it. You fix the symptom because that's what was asked. Next shift: trace the symptom one step back. If the problem starts in the same place every time, something upstream is producing it. Follow the chain one step further than the symptom. That one step often reveals the actual cause.",
+          "5d": "You mapped the structure and proposed a fix for the root cause. When resistance came, you didn't push. The structural fix was right. Next shift: present it as a cost argument. \"If we fix the root cause, we stop spending X hours every quarter on a problem that shouldn't exist.\" Frame it so saying no costs more than saying yes. The reasoning is there. The persuasion needs to match it.",
+          "5e": "You traced the problem to the feedback loop that produces it. You see the root cause and recognize that this type of diagnosis is the specific skill you're building. Next shift: find the leverage point. Not just the root cause, but the one place where a small change prevents the whole loop from running. Root cause tells you what's wrong. Leverage point tells you where to act.",
+          "5f": "You found the leverage point and positioned yourself at the gap between two groups that should be communicating. Next shift: look across your clients. Is this the same structural problem showing up in different companies? If you've seen it twice, it's not a client problem. It's a pattern at this growth stage. That recognition changes what your skill is worth.",
+          "5g": "You see the pattern across multiple clients and you're building an approach to diagnose this class of problem. You also see that market demand for this skill is growing. Next shift: change how the client thinks about the problem, not just the system. If you shift their mental model, they stop producing the problem entirely. That's the highest-leverage intervention.",
+          "5h": "You change how clients think about the type of problem, not just the specific instance. Your interventions shift behavior across multiple surfaces because you target the right point in the system. Your growth now: build this into a practice that others can learn from you, so the diagnostic approach spreads beyond the clients you personally touch."
+        }
+      }
+    ]
+  }
+}

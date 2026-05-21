@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ArrowLeft, ArrowRight, CheckCircle, RotateCcw, ChevronDown } from 'lucide-react';
+import { ArrowLeft, ArrowRight, CheckCircle, RotateCcw, ChevronDown, Star, ChevronLeft, ChevronRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Navbar } from '@/src/components/Navbar';
 import { Footer } from '@/src/components/Footer';
@@ -55,44 +55,97 @@ function ProgressBar({
   );
 }
 
-function OptionButton({
+function BrowseCard({
   option,
-  selected,
-  onSelect,
-  index,
+  isShortlisted,
+  onToggleShortlist,
+  exampleLabel,
+  shortlistLabel,
+  shortlistedLabel,
 }: {
   option: Option;
-  selected: boolean;
-  onSelect: () => void;
-  index: number;
+  isShortlisted: boolean;
+  onToggleShortlist: () => void;
+  exampleLabel: string;
+  shortlistLabel: string;
+  shortlistedLabel: string;
 }) {
   return (
-    <motion.button
+    <div className="rounded-2xl border border-[#E8E4E0] bg-white p-6 md:p-8 shadow-sm">
+      <p className="text-base md:text-lg text-[#1A1A1A] leading-relaxed font-medium mb-6">
+        {option.text}
+      </p>
+
+      {option.example && (
+        <div className="rounded-xl bg-[#F5F3F0] p-5 border border-[#E8E4E0] mb-6">
+          <span className="text-[10px] font-black uppercase tracking-widest font-mono text-[#8A8A8A] mb-2 block">
+            {exampleLabel}
+          </span>
+          <p className="text-sm text-[#4A4A4A] leading-relaxed">
+            {option.example}
+          </p>
+        </div>
+      )}
+
+      <button
+        onClick={onToggleShortlist}
+        className={`inline-flex items-center gap-2 text-sm font-bold px-5 py-2.5 rounded-xl border-2 transition-all cursor-pointer ${
+          isShortlisted
+            ? 'border-[#FFD700] bg-[#FFFBE6] text-[#996B00]'
+            : 'border-[#E8E4E0] text-[#4A4A4A] hover:border-[#FFD700]/50 hover:bg-[#FFFBE6]/50'
+        }`}
+      >
+        <Star className={`w-4 h-4 ${isShortlisted ? 'fill-[#FFD700] text-[#FFD700]' : ''}`} />
+        <span>{isShortlisted ? shortlistedLabel : shortlistLabel}</span>
+      </button>
+    </div>
+  );
+}
+
+function ShortlistItem({
+  option,
+  onChoose,
+  onRemove,
+  chooseLabel,
+  isChosen,
+}: {
+  option: Option;
+  onChoose: () => void;
+  onRemove: () => void;
+  chooseLabel: string;
+  isChosen: boolean;
+}) {
+  return (
+    <motion.div
       initial={{ opacity: 0, y: 12 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.3, delay: index * 0.04 }}
-      onClick={onSelect}
-      className={`w-full text-left rounded-xl border-2 p-5 cursor-pointer transition-all duration-200 ${
-        selected
-          ? 'border-[#0033CC] bg-[#E4ECF9] shadow-[0_0_0_1px_#0033CC]'
-          : 'border-[#E8E4E0] bg-white hover:border-[#0033CC]/30 hover:shadow-md'
+      className={`rounded-xl border-2 bg-white p-5 transition-all ${
+        isChosen ? 'border-[#0033CC] shadow-[0_0_0_1px_#0033CC]' : 'border-[#E8E4E0]'
       }`}
     >
-      <div className="flex items-start gap-4">
-        <div
-          className={`w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 text-xs font-black font-mono transition-colors ${
-            selected
+      <p className="text-sm text-[#1A1A1A] leading-relaxed font-medium">
+        {option.text}
+      </p>
+      <div className="flex items-center gap-3 mt-4">
+        <button
+          onClick={onChoose}
+          className={`inline-flex items-center gap-2 text-xs font-bold px-4 py-2 rounded-lg transition-all cursor-pointer ${
+            isChosen
               ? 'bg-[#0033CC] text-white'
-              : 'bg-[#FAF8F5] text-[#8A8A8A] border border-[#E8E4E0]'
+              : 'bg-[#0033CC] text-white hover:bg-[#002299]'
           }`}
         >
-          {String.fromCharCode(65 + index)}
-        </div>
-        <p className={`text-sm leading-relaxed ${selected ? 'text-[#1A1A1A] font-semibold' : 'text-[#4A4A4A]'}`}>
-          {option.text}
-        </p>
+          {isChosen && <CheckCircle className="w-3.5 h-3.5" />}
+          <span>{isChosen ? 'Chosen' : chooseLabel}</span>
+        </button>
+        <button
+          onClick={onRemove}
+          className="text-xs font-bold text-[#8A8A8A] hover:text-[#7B1E3A] transition-colors cursor-pointer"
+        >
+          Remove
+        </button>
       </div>
-    </motion.button>
+    </motion.div>
   );
 }
 
@@ -229,6 +282,19 @@ function QuestionResult({
   );
 }
 
+function shuffleArray<T>(arr: T[]): T[] {
+  const shuffled = [...arr];
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  return shuffled;
+}
+
+function shuffleQuestionOptions(qs: Question[]): Question[] {
+  return qs.map(q => ({ ...q, options: shuffleArray(q.options) }));
+}
+
 export function Identity({ locale }: { locale: QuizLocale }) {
   const { ui, data } = locale;
   const { questions, rubric, maxScorePerQuestion } = data;
@@ -238,6 +304,12 @@ export function Identity({ locale }: { locale: QuizLocale }) {
   const [answers, setAnswers] = useState<Record<number, string>>({});
   const [submitted, setSubmitted] = useState(false);
 
+  const [shuffledQuestions, setShuffledQuestions] = useState(() => shuffleQuestionOptions(questions));
+  const [browseIndex, setBrowseIndex] = useState(0);
+  const [shortlisted, setShortlisted] = useState<Record<number, string[]>>({});
+  const [viewMode, setViewMode] = useState<'browse' | 'shortlist' | 'feedback'>('browse');
+  const [browseDirection, setBrowseDirection] = useState(1);
+
   const allAnswered = Object.keys(answers).length === totalQuestions;
 
   function selectOption(questionId: number, optionId: string) {
@@ -245,16 +317,26 @@ export function Identity({ locale }: { locale: QuizLocale }) {
     setAnswers((prev) => ({ ...prev, [questionId]: optionId }));
   }
 
-  function goNext() {
+  function goNextQ() {
     if (currentQ < totalQuestions - 1) {
       setCurrentQ((p) => p + 1);
+      setBrowseIndex(0);
+      setViewMode('browse');
     }
   }
 
-  function goPrev() {
+  function goPrevQ() {
     if (currentQ > 0) {
       setCurrentQ((p) => p - 1);
+      setBrowseIndex(0);
+      setViewMode('browse');
     }
+  }
+
+  function goToQuestion(index: number) {
+    setCurrentQ(index);
+    setBrowseIndex(0);
+    setViewMode('browse');
   }
 
   function handleSubmit() {
@@ -268,7 +350,69 @@ export function Identity({ locale }: { locale: QuizLocale }) {
     setAnswers({});
     setCurrentQ(0);
     setSubmitted(false);
+    setShuffledQuestions(shuffleQuestionOptions(questions));
+    setBrowseIndex(0);
+    setShortlisted({});
+    setViewMode('browse');
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function browseNext() {
+    if (browseIndex < currentQuestion.options.length - 1) {
+      setBrowseDirection(1);
+      setBrowseIndex((p) => p + 1);
+    }
+  }
+
+  function browsePrev() {
+    if (browseIndex > 0) {
+      setBrowseDirection(-1);
+      setBrowseIndex((p) => p - 1);
+    }
+  }
+
+  function toggleShortlist(questionId: number, optionId: string) {
+    setShortlisted((prev) => {
+      const current = prev[questionId] ?? [];
+      if (current.includes(optionId)) {
+        return { ...prev, [questionId]: current.filter((id) => id !== optionId) };
+      }
+      return { ...prev, [questionId]: [...current, optionId] };
+    });
+  }
+
+  function removeFromShortlist(questionId: number, optionId: string) {
+    setShortlisted((prev) => {
+      const current = prev[questionId] ?? [];
+      return { ...prev, [questionId]: current.filter((id) => id !== optionId) };
+    });
+  }
+
+  function isOptionShortlisted(questionId: number, optionId: string): boolean {
+    return (shortlisted[questionId] ?? []).includes(optionId);
+  }
+
+  function getShortlistCount(questionId: number): number {
+    return (shortlisted[questionId] ?? []).length;
+  }
+
+  function chooseFromShortlist(questionId: number, optionId: string) {
+    selectOption(questionId, optionId);
+    setViewMode('feedback');
+  }
+
+  function handleContinue() {
+    if (currentQ < totalQuestions - 1) {
+      setCurrentQ((p) => p + 1);
+      setBrowseIndex(0);
+      setViewMode('browse');
+      window.scrollTo({ top: document.getElementById('quiz')?.offsetTop ?? 0, behavior: 'smooth' });
+    } else if (allAnswered) {
+      setSubmitted(true);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      setViewMode('browse');
+    }
   }
 
   const questionScores = questions.map((q) => {
@@ -280,8 +424,12 @@ export function Identity({ locale }: { locale: QuizLocale }) {
   const maxTotal = maxScorePerQuestion * totalQuestions;
   const totalPct = (totalScore / maxTotal) * 100;
 
-  const currentQuestion = questions[currentQ];
+  const currentQuestion = shuffledQuestions[currentQ];
   const currentAnswer = answers[currentQuestion.id];
+  const currentOption = currentQuestion.options[browseIndex];
+  const shortlistCount = getShortlistCount(currentQuestion.id);
+  const currentRubric = rubric.find(r => r.questionId === currentQuestion.id);
+  const currentFeedback = currentAnswer && currentRubric ? currentRubric.feedback[currentAnswer] ?? '' : '';
 
   return (
     <div className="min-h-screen bg-[#FAF8F5] font-sans text-[#1A1A1A]">
@@ -334,25 +482,181 @@ export function Identity({ locale }: { locale: QuizLocale }) {
                   {currentQuestion.context && (
                     <p className="text-sm text-[#4A4A4A] leading-relaxed">{currentQuestion.context}</p>
                   )}
+                  {currentAnswer && viewMode === 'browse' && (
+                    <div className="mt-3 inline-flex items-center gap-2 text-xs font-bold text-[#0033CC] bg-[#E4ECF9] px-3 py-1.5 rounded-full">
+                      <CheckCircle className="w-3.5 h-3.5" />
+                      <span>Answered</span>
+                    </div>
+                  )}
                 </div>
 
-                <div className="grid grid-cols-1 gap-3">
-                  {currentQuestion.options.map((opt, i) => (
-                    <OptionButton
-                      key={opt.id}
-                      option={opt}
-                      selected={currentAnswer === opt.id}
-                      onSelect={() => selectOption(currentQuestion.id, opt.id)}
-                      index={i}
-                    />
-                  ))}
-                </div>
+                <AnimatePresence mode="wait">
+                  {viewMode === 'browse' ? (
+                    <motion.div
+                      key="browse"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <motion.div
+                        key={browseIndex}
+                        initial={{ opacity: 0, x: browseDirection * 30 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.2, ease: [0.4, 0, 0.2, 1] }}
+                      >
+                        <BrowseCard
+                          option={currentOption}
+                          isShortlisted={isOptionShortlisted(currentQuestion.id, currentOption.id)}
+                          onToggleShortlist={() => toggleShortlist(currentQuestion.id, currentOption.id)}
+                          exampleLabel={ui.exampleLabel}
+                          shortlistLabel={ui.shortlist}
+                          shortlistedLabel={ui.shortlisted}
+                        />
+                      </motion.div>
+
+                      <div className="flex items-center justify-between mt-6">
+                        <button
+                          onClick={browsePrev}
+                          disabled={browseIndex === 0}
+                          className={`flex items-center gap-1 text-sm font-bold px-3 py-2 rounded-lg transition-all cursor-pointer ${
+                            browseIndex === 0
+                              ? 'text-[#C4C0BC] cursor-not-allowed'
+                              : 'text-[#4A4A4A] hover:text-[#0033CC]'
+                          }`}
+                        >
+                          <ChevronLeft className="w-4 h-4" />
+                        </button>
+
+                        <div className="flex items-center gap-3">
+                          <div className="flex gap-1.5">
+                            {currentQuestion.options.map((opt, i) => (
+                              <button
+                                key={opt.id}
+                                onClick={() => {
+                                  setBrowseDirection(i > browseIndex ? 1 : -1);
+                                  setBrowseIndex(i);
+                                }}
+                                className={`w-2.5 h-2.5 rounded-full transition-all cursor-pointer ${
+                                  i === browseIndex
+                                    ? 'bg-[#0033CC] scale-125'
+                                    : isOptionShortlisted(currentQuestion.id, opt.id)
+                                      ? 'bg-[#FFD700]'
+                                      : 'bg-[#E8E4E0]'
+                                }`}
+                              />
+                            ))}
+                          </div>
+                          <span className="text-[10px] font-black uppercase tracking-widest font-mono text-[#8A8A8A]">
+                            {ui.optionOf(browseIndex + 1, currentQuestion.options.length)}
+                          </span>
+                        </div>
+
+                        <button
+                          onClick={browseNext}
+                          disabled={browseIndex === currentQuestion.options.length - 1}
+                          className={`flex items-center gap-1 text-sm font-bold px-3 py-2 rounded-lg transition-all cursor-pointer ${
+                            browseIndex === currentQuestion.options.length - 1
+                              ? 'text-[#C4C0BC] cursor-not-allowed'
+                              : 'text-[#4A4A4A] hover:text-[#0033CC]'
+                          }`}
+                        >
+                          <ChevronRight className="w-4 h-4" />
+                        </button>
+                      </div>
+
+                      {shortlistCount > 0 && (
+                        <motion.div
+                          initial={{ opacity: 0, y: 8 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          className="mt-6 text-center"
+                        >
+                          <button
+                            onClick={() => setViewMode('shortlist')}
+                            className="inline-flex items-center gap-2 text-sm font-bold px-6 py-3 rounded-xl bg-[#0033CC] text-white hover:bg-[#002299] transition-all cursor-pointer shadow-lg"
+                          >
+                            <Star className="w-4 h-4 fill-white" />
+                            <span>{ui.viewShortlist(shortlistCount)}</span>
+                            <ArrowRight className="w-3.5 h-3.5" />
+                          </button>
+                        </motion.div>
+                      )}
+                    </motion.div>
+                  ) : viewMode === 'shortlist' ? (
+                    <motion.div
+                      key="shortlist"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <button
+                        onClick={() => setViewMode('browse')}
+                        className="inline-flex items-center gap-2 text-sm font-bold text-[#4A4A4A] hover:text-[#0033CC] mb-6 cursor-pointer transition-colors"
+                      >
+                        <ArrowLeft className="w-4 h-4" />
+                        <span>{ui.backToBrowse}</span>
+                      </button>
+
+                      <div className="space-y-3">
+                        {(shortlisted[currentQuestion.id] ?? []).map((optionId) => {
+                          const opt = currentQuestion.options.find((o) => o.id === optionId);
+                          if (!opt) return null;
+                          return (
+                            <ShortlistItem
+                              key={opt.id}
+                              option={opt}
+                              onChoose={() => chooseFromShortlist(currentQuestion.id, opt.id)}
+                              onRemove={() => removeFromShortlist(currentQuestion.id, opt.id)}
+                              chooseLabel={ui.chooseThis}
+                              isChosen={currentAnswer === opt.id}
+                            />
+                          );
+                        })}
+                      </div>
+
+                      {(shortlisted[currentQuestion.id] ?? []).length === 0 && (
+                        <div className="text-center py-12">
+                          <p className="text-sm text-[#8A8A8A]">
+                            All options removed. Go back to browse and shortlist again.
+                          </p>
+                        </div>
+                      )}
+                    </motion.div>
+                  ) : (
+                    <motion.div
+                      key="feedback"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <div className="rounded-2xl border border-[#E8E4E0] bg-white p-6 md:p-8 shadow-sm">
+                        <span className="text-[10px] font-black uppercase tracking-widest font-mono text-[#8A8A8A] mb-4 block">
+                          {ui.feedback}
+                        </span>
+                        <p className="text-base md:text-lg text-[#1A1A1A] leading-relaxed">
+                          {currentFeedback}
+                        </p>
+                      </div>
+                      <div className="mt-6 text-center">
+                        <button
+                          onClick={handleContinue}
+                          className="inline-flex items-center gap-2 text-sm font-bold px-6 py-3 rounded-xl bg-[#0033CC] text-white hover:bg-[#002299] transition-all cursor-pointer shadow-lg"
+                        >
+                          <span>{currentQ < totalQuestions - 1 ? ui.continue : ui.seeResults}</span>
+                          <ArrowRight className="w-3.5 h-3.5" />
+                        </button>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </motion.div>
             </AnimatePresence>
 
             <div className="flex items-center justify-between mt-10">
               <button
-                onClick={goPrev}
+                onClick={goPrevQ}
                 disabled={currentQ === 0}
                 className={`flex items-center gap-2 text-sm font-bold px-5 py-3 rounded-xl border-2 transition-all cursor-pointer ${
                   currentQ === 0
@@ -365,10 +669,10 @@ export function Identity({ locale }: { locale: QuizLocale }) {
               </button>
 
               <div className="flex gap-2">
-                {questions.map((q, i) => (
+                {shuffledQuestions.map((q, i) => (
                   <button
                     key={q.id}
-                    onClick={() => setCurrentQ(i)}
+                    onClick={() => goToQuestion(i)}
                     className={`w-2.5 h-2.5 rounded-full transition-all cursor-pointer ${
                       i === currentQ
                         ? 'bg-[#0033CC] scale-125'
@@ -382,7 +686,7 @@ export function Identity({ locale }: { locale: QuizLocale }) {
 
               {currentQ < totalQuestions - 1 ? (
                 <button
-                  onClick={goNext}
+                  onClick={goNextQ}
                   disabled={!currentAnswer}
                   className={`flex items-center gap-2 text-sm font-bold px-5 py-3 rounded-xl border-2 transition-all cursor-pointer ${
                     !currentAnswer

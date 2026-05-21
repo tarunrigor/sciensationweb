@@ -1,6 +1,7 @@
 export interface Option {
   id: string;
   text: string;
+  example?: string;
 }
 
 export interface Question {
@@ -43,6 +44,14 @@ export interface QuizLocale {
     retake: string;
     exploreFellowship: string;
     backToHome: string;
+    shortlist: string;
+    shortlisted: string;
+    viewShortlist: (n: number) => string;
+    backToBrowse: string;
+    chooseThis: string;
+    exampleLabel: string;
+    optionOf: (c: number, t: number) => string;
+    continue: string;
     scoreLabels: {
       exceptional: string;
       strong: string;
