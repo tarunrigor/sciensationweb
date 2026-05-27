@@ -7,7 +7,16 @@
       "Bash(mv \"109_122__The DT Impact.gif\" \"dt-impact-zoom.gif\")",
       "Bash(npx tsc *)",
       "Bash(git add *)",
-      "Bash(git push *)"
+      "Bash(git push *)",
+      "Bash(findstr /i \"scripts dev start\")",
+      "Bash(netstat -ano)",
+      "Bash(findstr \":5173 \")",
+      "Bash(Get-ChildItem -Path \"G:\\\\Code\\\\Live Websites\\\\sciensation\" -Recurse -Name)",
+      "Bash(Select-String -Pattern \"identity\")",
+      "Bash(node -e \"JSON.parse\\(require\\('fs'\\).readFileSync\\('public/locales/identity/en.json','utf8'\\)\\); console.log\\('en.json: valid'\\)\")",
+      "Bash(node -e \"JSON.parse\\(require\\('fs'\\).readFileSync\\('public/locales/identity/hi.json','utf8'\\)\\); console.log\\('hi.json: valid'\\)\")",
+      "Bash(node -e \"JSON.parse\\(require\\('fs'\\).readFileSync\\('public/locales/identity/te.json','utf8'\\)\\); console.log\\('te.json: valid'\\)\")",
+      "Bash(npx vite *)"
     ]
   }
 }
